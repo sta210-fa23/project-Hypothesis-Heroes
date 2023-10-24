@@ -23,7 +23,9 @@ Our dataset looks at Student Alcohol Consumption for ages 15-22.
 
 ## Data description
 
-...
+```{r}
+studentalc <- read_csv("~/project/data/student-por.csv")
+```
 
 ## Initial exploratory data analysis
 
