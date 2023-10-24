@@ -19,7 +19,7 @@ library(tidymodels)
 
 ## Introduction
 
-...
+Our dataset looks at Student Alcohol Consumption for ages 15-22.
 
 ## Data description
 
