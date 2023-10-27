@@ -141,7 +141,7 @@ studentalc |>
        title = "Family Educational Support vs. Weekend Alcohol Consumption Scores")
 ```
 
-Potential Interaction Effect: One interaction effect we\'re interest in exploring is the interaction between famsup and Pstatus, which is the interaction between Family Educational Support that a student receives and the parent\'s cohabitation status.
+Potential Interaction Effect: One interaction effect we\'re interested in exploring is the interaction between famsup and Pstatus, which is the interaction between Family Educational Support that a student receives and the parent\'s cohabitation status.
 
 ## Analysis approach
 
