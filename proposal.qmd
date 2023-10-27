@@ -19,7 +19,7 @@ library(tidymodels)
 
 ## Introduction
 
-All around the world, underage drinking among students is a significant public health issue and takes a huge toll on the quality of students\' lives and education. There is plenty of existing documentation on the effects of socioeconomic status on risky drinking behavior amongst college students. For example, a paper by Susan E. Collins, PhD, professor and licensed clinical psychologist, found that individuals with lower socioeconomic status as well as people of racial and ethnic minorities and homelessness experience greater alcohol-related consequences. Additionally, studies from the National Institutes of Health have found that \"aspects of college life---such as unstructured time, widespread availability of alcohol, inconsistent enforcement of underage drinking laws, and limited interactions with parents and other adults\" drives up rates of underage drinking, and \"college students have higher binge-drinking rates and a higher incidence of driving under the influence of alcohol than their noncollege peers.\" Since most existing literature on underage student drinking focuses on college students, we wanted to examine the factors contributing to drinking amongst secondary school students. Our research question is as follows:
+All around the world, underage drinking among students is a significant public health issue and takes a huge toll on the quality of students' lives and education. There is plenty of existing documentation on the effects of socioeconomic status on risky drinking behavior amongst college students. For example, a paper by Susan E. Collins, PhD, professor and licensed clinical psychologist, found that individuals with lower socioeconomic status as well as people of racial and ethnic minorities and homelessness experience greater alcohol-related consequences. Additionally, studies from the National Institutes of Health have found that "aspects of college life---such as unstructured time, widespread availability of alcohol, inconsistent enforcement of underage drinking laws, and limited interactions with parents and other adults" drives up rates of underage drinking, and "college students have higher binge-drinking rates and a higher incidence of driving under the influence of alcohol than their noncollege peers." Since most existing literature on underage student drinking focuses on college students, we wanted to examine the factors contributing to drinking amongst secondary school students. Our research question is as follows:
 
 How do social indicators affect student alcohol consumption in secondary schools?
 
@@ -31,7 +31,7 @@ We hypothesize that factors like familial status, family and school support, and
 studentalc <- read_csv("~/project/data/student-por.csv")
 ```
 
-This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student\'s family, education, social situation, alcohol consumption, and grades in their Portuguese language class.
+This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class.
 
 ## Initial exploratory data analysis
 
@@ -60,6 +60,12 @@ studentalc |>
        title = "Distribution of Weekend Alcohol Consumption Scores",
        subtitle = "On a scale of 1 (very low) to 5 (very high)")
 ```
+
+Potential Quantitative Predictor Variable:
+
+Potential Categorical Predictor Variable:
+
+Potential Interaction Effect:
 
 ## Analysis approach
 
