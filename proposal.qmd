@@ -77,9 +77,9 @@ studentalc %>%
   )
 ```
 
-Potential Quantitative Predictor Variable:
+Potential Quantitative Predictor Variable: studytime
 
-Potential Categorical Predictor Variable:
+Potential Categorical Predictor Variable: famsup
 
 Potential Interaction Effect:
 
