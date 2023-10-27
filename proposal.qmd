@@ -61,6 +61,22 @@ studentalc |>
        subtitle = "On a scale of 1 (very low) to 5 (very high)")
 ```
 
+```{r}
+studentalc %>%
+  ggplot(aes(x = Dalc)) +
+  geom_line(aes(y = ..count.., color = "Dalc"), stat = 'count') +
+  geom_line(aes(x = Walc, y = ..count.., color = "Walc"), stat = 'count') +
+  labs(x = "Alcohol Consumption",
+       y = "Frequency",
+       color = "Weekday or Weekend",
+       title = "Distribution of Alcohol Consumption Scores Weekday vs. Weekend",
+       subtitle = "On a scale of 1 (very low) to 5 (very high)") +
+  scale_color_manual(
+    values = c("Dalc" = "blue", "Walc" = "red"),
+    labels = c("Weekday", "Weekend")
+  )
+```
+
 Potential Quantitative Predictor Variable:
 
 Potential Categorical Predictor Variable:
