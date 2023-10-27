@@ -28,7 +28,7 @@ We hypothesize that factors like familial status, family and school support, and
 ## Data description
 
 ```{r}
-studentalc <- read_csv("~/project/data/student-por.csv")
+studentalc <- read_csv("~/project-Hypothesis-Heroes/data/student-por.csv")
 ```
 
 This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class.
@@ -79,7 +79,67 @@ studentalc %>%
 
 Potential Quantitative Predictor Variable: studytime
 
+```{r}
+studentalc |>
+  ggplot(aes(x = studytime)) +
+  geom_histogram(stat = "count") +
+  labs(x = "Weekly Study Time in Hours",
+       y = "Frequency",
+       title = "Distribution of Weekly Study Time in Hours")
+```
+
+The distribution of Weekly Study Time is unimodal at 2 hours. It appears that a significant majority of students study between 1 and 2 hours, while no student studies more than 4 hours.
+
 Potential Categorical Predictor Variable: famsup
+
+```{r}
+studentalc |>
+  ggplot(aes(x = famsup)) +
+  geom_histogram(stat = "count") +
+  labs(x = "Family Educational Support (Yes or No)",
+       y = "Frequency",
+       title = "Distribution of Family Educational Support")
+```
+
+About 400 students in the sample receive family educational support, while around 250 do not.
+
+Predictor-Response Relationships:
+
+```{r}
+studentalc |>
+  ggplot(aes(x = studytime, y = Dalc)) +
+  geom_point() +
+  geom_jitter() +
+  labs(x = "Study Time in Hours",
+       y = "Workday Alcohol Consumption Scores",
+       title = "Study Time vs. Workday Alcohol Consumption Scores")
+
+studentalc |>
+  ggplot(aes(x = studytime, y = Walc)) +
+  geom_point() +
+  geom_jitter() +
+  labs(x = "Study Time in Hours",
+       y = "Weekend Alcohol Consumption Scores",
+       title = "Study Time vs. Weekend Alcohol Consumption Scores")
+```
+
+```{r}
+studentalc |>
+  ggplot(aes(x = famsup, y = Dalc)) +
+  geom_point() +
+  geom_jitter() +
+  labs(x = "Family Educational Support (Yes or No)",
+       y = "Workday Alcohol Consumption Scores",
+       title = "Family Educational Support vs. Workday Alcohol Consumption Scores")
+
+studentalc |>
+  ggplot(aes(x = famsup, y = Walc)) +
+  geom_point() +
+  geom_jitter() +
+  labs(x = "Family Educational Support (Yes or No)",
+       y = "Weekend Alcohol Consumption Scores",
+       title = "Family Educational Support vs. Weekend Alcohol Consumption Scores")
+```
 
 Potential Interaction Effect:
 
