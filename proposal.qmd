@@ -111,32 +111,34 @@ studentalc |>
   ggplot(aes(x = studytime, y = Dalc)) +
   geom_point() +
   geom_jitter() +
-  labs(x = "Study Time in Hours",
+  geom_smooth(method = "lm") +
+  labs(x = "Study Time",
        y = "Workday Alcohol Consumption Scores",
-       title = "Study Time vs. Workday Alcohol Consumption Scores")
+       title = "Study Time vs. Workday Alcohol Consumption Scores",
+       subtitle = "On a scale of 1 to 4: 1 = <2 hours, 2 = 2-5 hours, 3 = 5-10 hours, 4 = >10 hours")
 
 studentalc |>
   ggplot(aes(x = studytime, y = Walc)) +
   geom_point() +
   geom_jitter() +
-  labs(x = "Study Time in Hours",
+  geom_smooth(method = "lm") +
+  labs(x = "Study Time",
        y = "Weekend Alcohol Consumption Scores",
-       title = "Study Time vs. Weekend Alcohol Consumption Scores")
+       title = "Study Time vs. Weekend Alcohol Consumption Scores",
+       subtitle = "On a scale of 1 to 4: 1 = <2 hours, 2 = 2-5 hours, 3 = 5-10 hours, 4 = >10 hours")
 ```
 
 ```{r}
 studentalc |>
   ggplot(aes(x = famsup, y = Dalc)) +
-  geom_point() +
-  geom_jitter() +
+  geom_boxplot() +
   labs(x = "Family Educational Support (Yes or No)",
        y = "Workday Alcohol Consumption Scores",
        title = "Family Educational Support vs. Workday Alcohol Consumption Scores")
 
 studentalc |>
   ggplot(aes(x = famsup, y = Walc)) +
-  geom_point() +
-  geom_jitter() +
+  geom_boxplot() +
   labs(x = "Family Educational Support (Yes or No)",
        y = "Weekend Alcohol Consumption Scores",
        title = "Family Educational Support vs. Weekend Alcohol Consumption Scores")
