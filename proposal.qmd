@@ -83,12 +83,13 @@ Potential Quantitative Predictor Variable: studytime
 studentalc |>
   ggplot(aes(x = studytime)) +
   geom_histogram(stat = "count") +
-  labs(x = "Weekly Study Time in Hours",
+  labs(x = "Weekly Study Time",
        y = "Frequency",
-       title = "Distribution of Weekly Study Time in Hours")
+       title = "Distribution of Weekly Study Time",
+       subtitle = "On a scale of 1 to 4: 1 = <2 hours, 2 = 2-5 hours, 3 = 5-10 hours, 4 = >10 hours")
 ```
 
-The distribution of Weekly Study Time is unimodal at 2 hours. It appears that a significant majority of students study between 1 and 2 hours, while no student studies more than 4 hours.
+The distribution of Weekly Study Time is unimodal at a self-reported score of 2, corresponding to 2-5 hours of studying a week. It appears that a significant majority of students study between 0 and 5 hours, while few students study more than 10 hours.
 
 Potential Categorical Predictor Variable: famsup
 
@@ -151,4 +152,4 @@ We will be creating a model for alcohol consumption in secondary school students
 
 ## Data dictionary
 
-The data dictionary can be found [here](ADD%20LINK!!!) \[Update the link and remove this note!\]
+The data dictionary can be found [here](https://github.com/sta210-fa23/project-Hypothesis-Heroes/blob/main/data/README.md).
