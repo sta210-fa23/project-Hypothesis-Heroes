@@ -9,7 +9,7 @@ The codebook for your data file(s) using the following format.
 ## student-por.csv
 
 | Variable   | Description                                                                                                                                         |
-|:--------------------|:--------------------------------------------------|
+|:---------------------|:-------------------------------------------------|
 | school     | student's school (binary: 'GP' - Gabriel Pereira or 'MS' - Mousinho da Silveira)                                                                    |
 | sex        | student's sex (binary: 'F' - female or 'M' - male)                                                                                                  |
 | age        | student's age (numeric: from 15 to 22)                                                                                                              |
