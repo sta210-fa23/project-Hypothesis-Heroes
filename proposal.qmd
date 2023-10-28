@@ -146,11 +146,11 @@ studentalc |>
 
 Potential Interaction Effect: One interaction effect we're interested in exploring is the interaction between famsup and Pstatus, which is the interaction between Family Educational Support that a student receives and the parent's cohabitation status.
 
+The data is pretty complete and cleaned already, but one thing we might do is add columns mutating the columns that are currently factors (even if they are technically numeric) such as the traveltime and studytime columns, which are survey responses from 1-4. It might help for us to change them into their actual corresponding minutes/hours so that the numeric data would be more informative.
+
 ## Analysis approach
 
 We will be creating a model for alcohol consumption in secondary school students. Our response variables are weekday and weekend alcohol consumption, which may be mutated into a single variable. Our potential predictors include family educational support, study time, grades, cohabitation status, familial education, and economic status. Alcohol consumption is measured on a self-report scale from 1 to 5, 5 being the highest. Study time is stratified into low medium and high amounts, grades are scaled from 1 to 20, educational support is a yes or no boolean, cohabitation status, economic status are both multi-level categorical variables. We will use a multiple linear regression in order to fit the variables to our model. We do not predict interaction as of now, though we may find some.
-
-## 
 
 ## Data dictionary
 
