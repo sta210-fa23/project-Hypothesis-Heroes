@@ -74,6 +74,7 @@ alc_rec1
 ```
 
 ```{r}
+<<<<<<< HEAD
 alc_spec <- linear_reg() |>
   set_engine("lm")
 
@@ -87,6 +88,13 @@ alc_fit <- alc_wflow |>
 
 tidy(alc_fit) |>
   kable(digits = 3)
+=======
+#replace lm1 with the fitted recipe
+lm1 = lm(Walc ~ famsup + studytime + Pstatus + freetime,studentalc)
+
+stepAIC(lm1, direction = "backward") |>
+  tidy()
+>>>>>>> 66463375caa360f9f0dd0adb494feec11023af9d
 ```
 
 ::: callout-important
