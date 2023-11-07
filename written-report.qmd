@@ -35,6 +35,12 @@ This data is from a Kaggle public dataset, originally sourced from the UC Irvine
 ## Methodology
 
 ```{r}
+
+studentalc <- studentalc |>
+  mutate(Pstatus = ifelse(Pstatus == "T", "Together", "Apart"))
+```
+
+```{r}
 #| label: split-data
 set.seed(210)
 alc_split <- initial_split(alc, prop = 0.75)
