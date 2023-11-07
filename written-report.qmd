@@ -59,21 +59,34 @@ alc_spec
 
 ```{r}
 #| label: create-recipe
-alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences, data = alc) |>
+alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
-  step_cut(freetime, studytime, breaks = 1) |>
-  step_interact(terms = ~ freetime:studytime) |>
-  step_interact(terms = ~ failures:studytime) |>
-  step_interact(terms = ~ failures:absences) |>
-  step_interact(terms = ~ famsup:mjob) |>
-  step_interact(terms = ~ famsup:fjob) |>
+  #step_cut(freetime, studytime, breaks = c(1, 2, 3, 4, 5)) |>
+  #step_cut(failures, studytime, breaks = c(0, 1, 2, 3, 4)) |>
+  step_interact(terms =~ freetime:studytime) |>
+  step_interact(terms =~ failures:studytime) |>
+  step_interact(terms =~ failures:absences) |>
+  step_interact(terms =~ famsup:mjob) |>
+  step_interact(terms =~ famsup:fjob) |>
   step_zv(all_predictors())
 
 alc_rec1
 ```
 
 ```{r}
+alc_spec <- linear_reg() |>
+  set_engine("lm")
 
+alc_wflow <- workflow() |>
+  add_model(alc_spec) |>
+  add_recipe(alc_rec1) 
+
+
+alc_fit <- alc_wflow |>
+  fit(data = alc_train)
+
+tidy(alc_fit) |>
+  kable(digits = 3)
 ```
 
 ::: callout-important
