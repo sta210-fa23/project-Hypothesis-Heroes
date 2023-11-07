@@ -27,7 +27,7 @@ We hypothesize that factors like familial status, family and school support, and
 ## Data description
 
 ```{r}
-alc <- read_csv("~/project/data/student-por.csv")
+alc <- read_csv("~/project-Hypothesis-Heroes/data/student-por.csv")
 ```
 
 This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class.
