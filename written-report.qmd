@@ -27,12 +27,35 @@ We hypothesize that factors like familial status, family and school support, and
 ## Data description
 
 ```{r}
-studentalc <- read_csv("~/project-Hypothesis-Heroes/data/student-por.csv")
+alc <- read_csv("~/project/data/student-por.csv")
 ```
 
 This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class.
 
-## 
+## Methodology
+
+```{r}
+#| label: split-data
+set.seed(210)
+alc_split <- initial_split(alc, prop = 0.75)
+alc_train <- training(alc_split)
+alc_test <- testing(alc_split)
+```
+
+```{r}
+#| label: specify-model
+alc_spec <- linear_reg() |>
+  set_engine("lm")
+  
+alc_spec
+```
+
+### Model 1
+
+```{r}
+#| label: create-recipe
+alc_rec1 <- recipe()
+```
 
 ::: callout-important
 Before you submit, make sure your code chunks are turned off with `echo: false` and there are no warnings or messages with `warning: false` and `message: false` in the YAML.
