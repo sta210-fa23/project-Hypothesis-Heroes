@@ -60,7 +60,8 @@ alc_spec
 
 ```{r}
 #| label: create-recipe
-alc_rec1 <- recipe()
+alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences) |>
+  step_dummy(all_nominal_predictors()) |>
 ```
 
 ::: callout-important
