@@ -88,6 +88,10 @@ alc_fit <- alc_wflow |>
 tidy(alc_fit) |>
   kable(digits = 3)
 
+
+```
+
+```{r}
 #replace lm1 with the fitted recipe
 lm1 = lm(Walc ~ famsup + studytime + Pstatus + freetime,studentalc)
 
