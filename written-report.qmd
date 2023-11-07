@@ -35,8 +35,7 @@ This data is from a Kaggle public dataset, originally sourced from the UC Irvine
 ## Methodology
 
 ```{r}
-
-studentalc <- studentalc |>
+alc <- alc |>
   mutate(Pstatus = ifelse(Pstatus == "T", "Together", "Apart"))
 ```
 
@@ -60,7 +59,21 @@ alc_spec
 
 ```{r}
 #| label: create-recipe
-alc_rec1 <- recipe()
+alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences, data = alc) |>
+  step_dummy(all_nominal_predictors()) |>
+  step_cut(freetime, studytime, breaks = 1) |>
+  step_interact(terms = ~ freetime:studytime) |>
+  step_interact(terms = ~ failures:studytime) |>
+  step_interact(terms = ~ failures:absences) |>
+  step_interact(terms = ~ famsup:mjob) |>
+  step_interact(terms = ~ famsup:fjob) |>
+  step_zv(all_predictors())
+
+alc_rec1
+```
+
+```{r}
+
 ```
 
 ::: callout-important
