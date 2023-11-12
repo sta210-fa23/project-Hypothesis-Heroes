@@ -12,8 +12,10 @@ editor: visual
 
 ```{r}
 #| label: load packages and data
+#| message: FALSE
 library(tidyverse)
 library(tidymodels)
+library(kableExtra)
 ```
 
 ## Introduction
@@ -59,15 +61,13 @@ alc_spec
 
 ```{r}
 #| label: create-recipe
-alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc) |>
+alc_rec1 <- recipe(Walc ~ sex + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
-  #step_cut(freetime, studytime, breaks = c(1, 2, 3, 4, 5)) |>
-  #step_cut(failures, studytime, breaks = c(0, 1, 2, 3, 4)) |>
-  step_interact(terms =~ freetime:studytime) |>
-  step_interact(terms =~ failures:studytime) |>
-  step_interact(terms =~ failures:absences) |>
-  step_interact(terms =~ famsup:mjob) |>
-  step_interact(terms =~ famsup:fjob) |>
+  step_interact(terms = ~ starts_with("freetime"):starts_with("studytime")) |>
+  step_interact(terms = ~ starts_with("failures"):starts_with("studytime")) |>
+  step_interact(terms = ~ starts_with("failures"):starts_with("absences")) |>
+  step_interact(terms = ~ starts_with("famsup"):starts_with("Mjob")) |>
+  step_interact(terms = ~ starts_with("famsup"):starts_with("Fjob")) |>
   step_zv(all_predictors())
 
 alc_rec1
