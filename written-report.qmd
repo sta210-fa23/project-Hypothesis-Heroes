@@ -31,7 +31,7 @@ We hypothesize that factors like gender, familial status, family and school supp
 alc <- read_csv("~/project-Hypothesis-Heroes/data/student-por.csv")
 ```
 
-This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class. Some key variables we will be examining are schoolsup, which is whether or not their school provides them extra academic support, famsup, which is whether or not their family provides them extra academic support, Mjob and Fjob, which is the categories that their parents' jobs fall under, freetime and studytime, which is the amount of free time after school and amount of time spent studying on a scale of 1-5, number of absences, and amount of class failures, on a scale of 1-4. Our response variable is Walc, which is the students' average weekend alcohol consumption, on a scale of 1-5, with 5 being very high.
+This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class. Some key variables we will be examining are sex, male or female, Pstatus, whether their parents are together or apart, schoolsup, whether or not their school provides them extra academic support, famsup, whether or not their family provides them extra academic support, Mjob and Fjob, the categories that their parents' jobs fall under, freetime and studytime, the amount of free time after school and amount of time spent studying on a scale of 1-5, number of absences, and amount of class failures, on a scale of 1-4. Our response variable is Walc, which is the students' average weekend alcohol consumption, on a scale of 1-5, with 5 being very high.
 
 ```{r}
 #| fig-height: 10
@@ -81,11 +81,13 @@ walcfamsup <- alc |>
 
 ## Methodology
 
+We are using a multivariable linear regression to examine the effects of the predictor variables sex, Pstatus, schoolsup, famsup, Mjob, Fjob, freetime, studytime, absences, and failures on the response variable Walc, or weekend alcohol consumption. We are using a linear model rather than logistic since Walc is not binary. In our model we are also including interactions between freetime and studytime, failures and studytime, failures and absences, as well as famsup and Mjob and famsup and Fjob. In our model we used step_dummy() to create dummy variables for all categorical variables, step_interact() to create all of our interaction variables, and step_zv() to remove all variables with only one value.
+
 ## Results
 
 ```{r}
-alc <- alc |>
-  mutate(Pstatus = ifelse(Pstatus == "T", "Together", "Apart"))
+# alc <- alc |>
+#   mutate(Pstatus = ifelse(Pstatus == "T", "Together", "Apart"))
 ```
 
 ```{r}
@@ -108,7 +110,7 @@ alc_spec
 
 ```{r}
 #| label: create-recipe
-alc_rec1 <- recipe(Walc ~ sex + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc) |>
+alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
   step_interact(terms = ~ starts_with("freetime"):starts_with("studytime")) |>
   step_interact(terms = ~ starts_with("failures"):starts_with("studytime")) |>
