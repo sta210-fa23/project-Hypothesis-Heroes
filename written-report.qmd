@@ -17,6 +17,7 @@ library(tidyverse)
 library(tidymodels)
 library(kableExtra)
 library(patchwork)
+library(MASS)
 ```
 
 ## Introduction and data
@@ -141,11 +142,9 @@ tidy(alc_fit) |>
 ```
 
 ```{r}
-# #replace lm1 with the fitted recipe
-# lm1 = lm(Walc ~ famsup + studytime + Pstatus + freetime, alc)
-# 
-# stepAIC(lm1, direction = "backward") |>
-#   tidy()
+lm1 <- lm(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime * studytime * absences * failures, data = alc_train)
+
+stepAIC(lm1, direction = "backward") 
 ```
 
 ::: callout-important
