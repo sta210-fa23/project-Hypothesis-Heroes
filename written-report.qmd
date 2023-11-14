@@ -126,7 +126,8 @@ alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
                      Fedu + Mjob + famsize + reason + nursery +
                      famrel + freetime + goout, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
-  step_zv(all_predictors())
+  step_zv(all_predictors()) |>
+  step_center(absences)
 
 alc_rec1
 ```
