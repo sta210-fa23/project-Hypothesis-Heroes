@@ -90,7 +90,7 @@ In our model we also considered including interactions between freetime and stud
 
 ## Results
 
-### Split Data into Testing and Training Data 
+### Split Data into Testing and Training Data
 
 ```{r}
 #| label: split-data
@@ -257,3 +257,5 @@ rmse(alc_test_pred, truth = Walc, estimate = .pred) |>
 rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
   kable(digits = 3)
 ```
+
+### 
