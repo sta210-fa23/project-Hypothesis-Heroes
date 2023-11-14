@@ -119,6 +119,14 @@ stepAIC(lm1, direction = "backward") |>
 ### Model
 
 ```{r}
+alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
+  step_dummy(all_nominal_predictors()) |>
+  step_zv(all_predictors())
+
+alc_rec1
+```
+
+```{r}
 #| label: create-recipe
 alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
@@ -126,6 +134,22 @@ alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
   step_zv(all_predictors())
 
 alc_rec2
+```
+
+```{r}
+alc_spec <- linear_reg() |>
+  set_engine("lm")
+
+alc_wflow1 <- workflow() |>
+  add_model(alc_spec) |>
+  add_recipe(alc_rec1) 
+
+
+alc_fit1 <- alc_wflow |>
+  fit(data = alc_train)
+
+tidy(alc_fit1) |>
+  kable(digits = 3)
 ```
 
 ```{r}
