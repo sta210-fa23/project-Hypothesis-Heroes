@@ -111,10 +111,11 @@ alc_spec
 ### StepAIC Model
 
 ```{r}
-#|message: FALSE
+#|label: stepAIC-model
 lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
 
-stepAIC(lm1, direction = "backward",trace = 0)
+stepAIC(lm1, direction = "backward",trace = 0) |>
+  tidy()
 ```
 
 
