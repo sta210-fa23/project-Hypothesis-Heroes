@@ -168,9 +168,14 @@ collect_metrics(alc_fit_cv1, summarize = TRUE)
 
 ```{r}
 #| label: create-recipe
-alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
+alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu + 
+                     Fedu + Mjob + famsize + reason + nursery +
+                     famrel + freetime + goout, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
   step_interact(terms = ~ starts_with("studytime"):starts_with("absences")) |>
+  step_interact(terms = ~ starts_with("freetime"):starts_with("goout")) |>
+  step_interact(terms = ~ starts_with("famsize"):starts_with("famrel")) |>
+  step_center(absences) |>
   step_zv(all_predictors())
 
 alc_rec2
