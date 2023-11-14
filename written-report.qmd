@@ -115,9 +115,9 @@ alc_spec
 lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
 
 stepAIC(lm1, direction = "backward",trace = 0) |>
-  tidy()
+  tidy() |>
+  kable(digits = 3)
 ```
-
 
 ### Model 1
 
