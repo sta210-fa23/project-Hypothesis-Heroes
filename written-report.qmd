@@ -88,6 +88,8 @@ We are using a multivariable linear regression to examine the effects of the pre
 
 ## Results
 
+### Testing and Training Data and 5 Fold Cross Validation
+
 ```{r}
 #| label: split-data
 set.seed(210)
@@ -131,6 +133,8 @@ alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
 alc_rec1
 ```
 
+#### Model Specification + Workflow
+
 ```{r}
 alc_spec1 <- linear_reg() |>
   set_engine("lm")
@@ -145,11 +149,19 @@ alc_fit1 <- alc_wflow1 |>
 tidy(alc_fit1) |>
   kable(digits = 3)
 
+
+```
+
+#### VIF Multicollinearity Test
+
+```{r}
 alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
 vif(alc_fit_model_1$fit) |>
   tidy() |>
   kable(digits = 3)
 ```
+
+#### RMSE and R-Squared 
 
 ```{r}
 calc_model_stats <- function(x) {
@@ -182,6 +194,8 @@ alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
 alc_rec2
 ```
 
+#### Model Specification and Workflow 2
+
 ```{r}
 alc_spec <- linear_reg() |>
   set_engine("lm")
@@ -196,11 +210,19 @@ alc_fit2 <- alc_wflow2 |>
 tidy(alc_fit2) |>
   kable(digits = 3)
 
+
+```
+
+#### VIF Multicollinearity Test 2
+
+```{r}
 alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
 vif(alc_fit_model_2$fit) |>
   tidy() |>
   kable(digits = 3)
 ```
+
+#### RMSE and R-Squared 2
 
 ```{r}
 calc_model_stats <- function(x) {
@@ -215,6 +237,8 @@ alc_fit_cv2 <- alc_wflow2 |>
 collect_metrics(alc_fit_cv2, summarize = TRUE) |>
   kable(digits = 3)
 ```
+
+### Applying Model 1 to Testing Data
 
 ```{r}
 
