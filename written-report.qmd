@@ -219,6 +219,7 @@ alc_test_pred <- predict(alc_fit1, alc_test) |>
   bind_cols(alc_test)
 
 rmse(alc_test_pred, truth = Walc, estimate = .pred)
+rsq(alc_test_pred, truth = Walc, estimate = .pred)
 ```
 
 ::: callout-important
