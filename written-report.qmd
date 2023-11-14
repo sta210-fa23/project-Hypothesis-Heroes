@@ -167,10 +167,9 @@ alc_wflow2 <- workflow() |>
   add_model(alc_spec) |>
   add_recipe(alc_rec2) 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 87590b22107ee4b28c3e34188a9a4e240d6f7938
+
+
 alc_fit2 <- alc_wflow2 |>
   fit(data = alc_train)
 
