@@ -101,11 +101,6 @@ folds
 ```
 
 ```{r}
-set.seed(8272)
-alc_folds <- vfold_cv(alc_train, v = 10)
-```
-
-```{r}
 #| label: specify-model
 alc_spec <- linear_reg() |>
   set_engine("lm")
@@ -148,7 +143,8 @@ tidy(alc_fit1) |>
   kable(digits = 3)
 
 alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
-vif(alc_fit_model_1$fit)
+vif(alc_fit_model_1$fit) |>
+  tidy()
 ```
 
 ```{r}
@@ -193,7 +189,8 @@ tidy(alc_fit2) |>
   kable(digits = 3)
 
 alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
-vif(alc_fit_model_2$fit)
+vif(alc_fit_model_2$fit) |>
+  tidy()
 ```
 
 ```{r}
