@@ -97,7 +97,6 @@ alc_test <- testing(alc_split)
 
 set.seed(210)
 folds <- vfold_cv(alc_train, v = 5) 
-folds
 ```
 
 ```{r}
@@ -148,7 +147,8 @@ tidy(alc_fit1) |>
 
 alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
 vif(alc_fit_model_1$fit) |>
-  tidy()
+  tidy() |>
+  kable(digits = 3)
 ```
 
 ```{r}
@@ -161,7 +161,8 @@ alc_fit_cv1 <- alc_wflow1 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
 
-collect_metrics(alc_fit_cv1, summarize = TRUE)
+collect_metrics(alc_fit_cv1, summarize = TRUE) |>
+  kable(digits = 3)
 ```
 
 ### Model 2 with Interactions
@@ -197,7 +198,8 @@ tidy(alc_fit2) |>
 
 alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
 vif(alc_fit_model_2$fit) |>
-  tidy()
+  tidy() |>
+  kable(digits = 3)
 ```
 
 ```{r}
@@ -210,7 +212,8 @@ alc_fit_cv2 <- alc_wflow2 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
 
-collect_metrics(alc_fit_cv2, summarize = TRUE)
+collect_metrics(alc_fit_cv2, summarize = TRUE) |>
+  kable(digits = 3)
 ```
 
 ```{r}
@@ -218,10 +221,8 @@ collect_metrics(alc_fit_cv2, summarize = TRUE)
 alc_test_pred <- predict(alc_fit1, alc_test) |>
   bind_cols(alc_test)
 
-rmse(alc_test_pred, truth = Walc, estimate = .pred)
-rsq(alc_test_pred, truth = Walc, estimate = .pred)
+rmse(alc_test_pred, truth = Walc, estimate = .pred) |>
+  kable(digits = 3)
+rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
+  kable(digits = 3)
 ```
-
-::: callout-important
-Before you submit, make sure your code chunks are turned off with `echo: false` and there are no warnings or messages with `warning: false` and `message: false` in the YAML.
-:::
