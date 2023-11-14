@@ -113,38 +113,34 @@ alc_spec
 lm1 <- lm(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc_train)
 
 stepAIC(lm1, direction = "backward") |>
-  tidy()
+  tidy() 
 ```
 
-### Model with Interactions
+### Model
 
 ```{r}
 #| label: create-recipe
-alc_rec1 <- recipe(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc) |>
+alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
-  step_interact(terms = ~ starts_with("freetime"):starts_with("studytime")) |>
-  step_interact(terms = ~ starts_with("failures"):starts_with("studytime")) |>
-  step_interact(terms = ~ starts_with("failures"):starts_with("absences")) |>
-  step_interact(terms = ~ starts_with("famsup"):starts_with("Mjob")) |>
-  step_interact(terms = ~ starts_with("famsup"):starts_with("Fjob")) |>
+  step_interact(terms = ~ starts_with("studytime"):starts_with("absences")) |>
   step_zv(all_predictors())
 
-alc_rec1
+alc_rec2
 ```
 
 ```{r}
 alc_spec <- linear_reg() |>
   set_engine("lm")
 
-alc_wflow <- workflow() |>
+alc_wflow2 <- workflow() |>
   add_model(alc_spec) |>
-  add_recipe(alc_rec1) 
+  add_recipe(alc_rec2) 
 
 
-alc_fit <- alc_wflow |>
+alc_fit2 <- alc_wflow |>
   fit(data = alc_train)
 
-tidy(alc_fit) |>
+tidy(alc_fit2) |>
   kable(digits = 3)
 ```
 
