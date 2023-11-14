@@ -88,7 +88,7 @@ We are using a multivariable linear regression to examine the effects of the pre
 
 ## Results
 
-### Testing and Training Data and 5 Fold Cross Validation
+### Split Data into Testing and Training Data and 5 Folds for Cross-Validation
 
 ```{r}
 #| label: split-data
@@ -99,14 +99,6 @@ alc_test <- testing(alc_split)
 
 set.seed(210)
 folds <- vfold_cv(alc_train, v = 5) 
-```
-
-```{r}
-#| label: specify-model
-alc_spec <- linear_reg() |>
-  set_engine("lm")
-  
-alc_spec
 ```
 
 ### StepAIC Model
@@ -133,7 +125,7 @@ alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
 alc_rec1
 ```
 
-#### Model Specification + Workflow
+#### Model Specification + Workflow 1
 
 ```{r}
 alc_spec1 <- linear_reg() |>
@@ -152,7 +144,7 @@ tidy(alc_fit1) |>
 
 ```
 
-#### VIF Multicollinearity Test
+#### VIF Multicollinearity Test 1
 
 ```{r}
 alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
@@ -161,7 +153,7 @@ vif(alc_fit_model_1$fit) |>
   kable(digits = 3)
 ```
 
-#### RMSE and R-Squared 
+#### RMSE and R-Squared from 5-Fold Cross Validation 1
 
 ```{r}
 calc_model_stats <- function(x) {
@@ -194,7 +186,7 @@ alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
 alc_rec2
 ```
 
-#### Model Specification and Workflow 2
+#### Model Specification + Workflow 2
 
 ```{r}
 alc_spec <- linear_reg() |>
@@ -222,7 +214,7 @@ vif(alc_fit_model_2$fit) |>
   kable(digits = 3)
 ```
 
-#### RMSE and R-Squared 2
+#### RMSE and R-Squared from 5-Fold Cross Validation 2
 
 ```{r}
 calc_model_stats <- function(x) {
