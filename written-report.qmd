@@ -99,6 +99,10 @@ set.seed(210)
 alc_split <- initial_split(alc, prop = 0.75)
 alc_train <- training(alc_split)
 alc_test <- testing(alc_split)
+
+set.seed(210)
+folds <- vfold_cv(alc_train, v = 5) 
+folds
 ```
 
 ```{r}
@@ -147,6 +151,18 @@ alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
 vif(alc_fit_model_1$fit)
 ```
 
+```{r}
+calc_model_stats <- function(x) {
+  glance(extract_fit_parsnip(x)) |>
+    select(adj.r.squared, AIC, BIC)
+}
+
+alc_fit_rsq1 <- alc_wflow1 |>
+  fit_resamples(resamples = folds,
+                control = control_resamples(extract = calc_model_stats))
+collect_metrics(alc_fit_rsq1, summarize = TRUE)
+```
+
 ### Model 2 with Interactions
 
 ```{r}
@@ -175,6 +191,19 @@ tidy(alc_fit2) |>
 
 alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
 vif(alc_fit_model_2$fit)
+```
+
+```{r}
+{r}
+calc_model_stats <- function(x) {
+  glance(extract_fit_parsnip(x)) |>
+    select(adj.r.squared, AIC, BIC)
+}
+
+alc_fit_rsq1 <- alc_wflow1 |>
+  fit_resamples(resamples = folds,
+                control = control_resamples(extract = calc_model_stats))
+collect_metrics(alc_fit_rsq1, summarize = TRUE)
 ```
 
 ::: callout-important
