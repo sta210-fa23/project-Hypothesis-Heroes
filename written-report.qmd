@@ -117,7 +117,7 @@ stepAIC(lm1, direction = "backward",trace = 0) |>
 ```{r}
 alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu + 
                      Fedu + Mjob + famsize + reason + nursery +
-                     famrel + freetime + goout, data = alc) |>
+                     famrel + freetime + goout, data = alc_train) |>
   step_dummy(all_nominal_predictors()) |>
   step_zv(all_predictors()) |>
   step_center(absences)
@@ -175,7 +175,7 @@ collect_metrics(alc_fit_cv1, summarize = TRUE) |>
 #| label: create-recipe
 alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu + 
                      Fedu + Mjob + famsize + reason + nursery +
-                     famrel + freetime + goout, data = alc) |>
+                     famrel + freetime + goout, data = alc_train) |>
   step_dummy(all_nominal_predictors()) |>
   step_interact(terms = ~ starts_with("studytime"):starts_with("absences")) |>
   step_interact(terms = ~ starts_with("freetime"):starts_with("goout")) |>
@@ -231,6 +231,14 @@ collect_metrics(alc_fit_cv2, summarize = TRUE) |>
 ```
 
 ### Applying Model 1 to Testing Data
+
+```{r}
+alc_fit <- alc_wflow1 |>
+  fit(data = alc_test)
+
+tidy(alc_fit)|>
+  kable(digits = 3)
+```
 
 ```{r}
 
