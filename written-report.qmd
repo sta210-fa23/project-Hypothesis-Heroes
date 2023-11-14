@@ -88,8 +88,6 @@ We are using a multivariable linear regression to examine the effects of the pre
 
 In our model we also considered including interactions between freetime and studytime, failures and studytime, failures and absences, as well as famsup and Mjob and famsup and Fjob. In our model we used step_dummy() to create dummy variables for all categorical variables, step_interact() to create all of our interaction variables, and step_zv() to remove all variables with only one value.
 
-## Results
-
 ### Split Data into Testing and Training Data
 
 ```{r}
@@ -258,9 +256,13 @@ rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
   kable(digits = 3)
 ```
 
+## Results
+
+Our model assumes independence between predictors, linearity, and the other assumptions of a multilinear regression model. These assumptions were supported by our diagnostic tests as well as the VIF test. Our final R squared was .211 and our final RMSE was 1.125. This suggests that our model accounts for around 21% of the total variation in weekend alcohol consumption with an error of about 1.09.
+
 The coefficients with significant p-values are the following:\
 \
-Medu: +.34 - As each level of Mother\'s education increases by one unit the expected Walc score increases by .34 on average.
+Medu: +.34 - As each level of Mother's education increases by one unit the expected Walc score increases by .34 on average.
 
 famrel: +.002 - As each level of quality of family relationship increases by one unit the expected Walc score increases by .002 on average.
 
@@ -268,4 +270,4 @@ goout: +.365 - As each level of going out with friends increases by one unit the
 
 sex_M:  +.872 - If the individual is Male, the expected Walc score increases by .872 on average.
 
-Mjob_services: -.716 - If the individual\'s Mother works in the services industry, the expected Walc score decreases by .716 on average.
+Mjob_services: -.716 - If the individual's Mother works in the services industry, the expected Walc score decreases by .716 on average.
