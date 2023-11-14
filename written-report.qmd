@@ -136,7 +136,6 @@ alc_wflow1 <- workflow() |>
   add_model(alc_spec1) |>
   add_recipe(alc_rec1) 
 
-
 alc_fit1 <- alc_wflow1 |>
   fit(data = alc_train)
 
@@ -154,9 +153,10 @@ calc_model_stats <- function(x) {
     select(adj.r.squared, AIC, BIC)
 }
 
-alc_fit_rsq1 <- alc_wflow1 |>
+alc_fit_cv1 <- alc_wflow1 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
+
 collect_metrics(alc_fit_rsq1, summarize = TRUE)
 ```
 
@@ -197,9 +197,10 @@ calc_model_stats <- function(x) {
     select(adj.r.squared, AIC, BIC)
 }
 
-alc_fit_rsq2 <- alc_wflow2 |>
+alc_fit_cv2 <- alc_wflow2 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
+
 collect_metrics(alc_fit_rsq2, summarize = TRUE)
 ```
 
