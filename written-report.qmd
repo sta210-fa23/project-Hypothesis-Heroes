@@ -210,7 +210,7 @@ alc_fit_cv2 <- alc_wflow2 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
 
-collect_metrics(alc_fit_rsq2, summarize = TRUE)
+collect_metrics(alc_fit_cv2, summarize = TRUE)
 ```
 
 ```{r}
