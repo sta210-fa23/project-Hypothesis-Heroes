@@ -110,7 +110,7 @@ alc_spec
 ### StepAIC Model
 
 ```{r}
-lm1 <- lm(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob, data = alc_train)
+lm1 <- lm(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc_train)
 
 stepAIC(lm1, direction = "backward") |>
   tidy()
@@ -146,7 +146,6 @@ alc_fit <- alc_wflow |>
 
 tidy(alc_fit) |>
   kable(digits = 3)
-
 ```
 
 ::: callout-important
