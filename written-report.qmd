@@ -115,14 +115,15 @@ alc_spec
 lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
 
 stepAIC(lm1, direction = "backward",trace = 0) |>
-  tidy() |>
-  kable(digits = 3)
+  tidy()
 ```
 
 ### Model 1
 
 ```{r}
-alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
+alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu + 
+                     Fedu + Mjob + famsize + reason + nursery +
+                     famrel + freetime + goout, data = alc) |>
   step_dummy(all_nominal_predictors()) |>
   step_zv(all_predictors())
 
