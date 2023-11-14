@@ -262,12 +262,12 @@ Our model assumes independence between predictors, linearity, and the other assu
 
 The coefficients with significant p-values are the following:\
 \
-Medu: +.340 - As each level of Mother's education increases by one unit the expected Walc score increases by .34 on average.
+Medu: +.340 - As each level of Mother's education increases by one unit the expected Walc score increases by .340 on average.
 
 famrel: -.296 - As each level of quality of family relationship increases by one unit the expected Walc score decreases by -.296 on average.
 
 goout: +.365 - As each level of going out with friends increases by one unit the expected Walc score increases by .365 on average.
 
-sex_M:  +.872 - If the individual is Male, the expected Walc score increases by .872 compared to the baseline of sex_W on average.
+sex_M: +.872 - If the individual is Male, the expected Walc score increases by .872 compared to the baseline of sex_W on average.
 
 Mjob_services: -.716 - If the individual's Mother works in the services industry, the expected Walc score decreases by .716 compared to the baseline of Mjob_at_home on average.
