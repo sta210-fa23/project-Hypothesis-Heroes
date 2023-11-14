@@ -89,11 +89,6 @@ We are using a multivariable linear regression to examine the effects of the pre
 ## Results
 
 ```{r}
-# alc <- alc |>
-#   mutate(Pstatus = ifelse(Pstatus == "T", "Together", "Apart"))
-```
-
-```{r}
 #| label: split-data
 set.seed(210)
 alc_split <- initial_split(alc, prop = 0.75)
@@ -103,6 +98,11 @@ alc_test <- testing(alc_split)
 set.seed(210)
 folds <- vfold_cv(alc_train, v = 5) 
 folds
+```
+
+```{r}
+set.seed(8272)
+alc_folds <- vfold_cv(alc_train, v = 10)
 ```
 
 ```{r}
@@ -182,6 +182,9 @@ alc_spec <- linear_reg() |>
 alc_wflow2 <- workflow() |>
   add_model(alc_spec) |>
   add_recipe(alc_rec2) 
+
+
+
 
 alc_fit2 <- alc_wflow2 |>
   fit(data = alc_train)
