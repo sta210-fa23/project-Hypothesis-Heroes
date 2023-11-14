@@ -18,6 +18,8 @@ library(tidymodels)
 library(kableExtra)
 library(patchwork)
 library(MASS)
+library(knitr)
+library(rms)
 ```
 
 ## Introduction and data
@@ -140,6 +142,9 @@ alc_fit1 <- alc_wflow1 |>
 
 tidy(alc_fit1) |>
   kable(digits = 3)
+
+alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
+vif(alc_fit_model_1$fit)
 ```
 
 ### Model 2 with Interactions
@@ -167,6 +172,9 @@ alc_fit2 <- alc_wflow2 |>
 
 tidy(alc_fit2) |>
   kable(digits = 3)
+
+alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
+vif(alc_fit_model_2$fit)
 ```
 
 ::: callout-important
