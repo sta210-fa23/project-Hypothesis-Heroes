@@ -111,12 +111,12 @@ alc_spec
 ### StepAIC Model
 
 ```{r}
+#|message: FALSE
 lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
 
-lm1AIC <- stepAIC(lm1, direction = "backward")
-
-list(attr(terms(lm1AIC), "term.labels")) 
+stepAIC(lm1, direction = "backward",trace = 0)
 ```
+
 
 ### Model 1
 
@@ -157,7 +157,7 @@ alc_fit_cv1 <- alc_wflow1 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
 
-collect_metrics(alc_fit_rsq1, summarize = TRUE)
+collect_metrics(alc_fit_cv1, summarize = TRUE)
 ```
 
 ### Model 2 with Interactions
