@@ -116,7 +116,7 @@ stepAIC(lm1, direction = "backward") |>
   tidy() 
 ```
 
-### Model
+### Model 1
 
 ```{r}
 alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
@@ -125,6 +125,24 @@ alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences, data = alc) |>
 
 alc_rec1
 ```
+
+```{r}
+alc_spec1 <- linear_reg() |>
+  set_engine("lm")
+
+alc_wflow1 <- workflow() |>
+  add_model(alc_spec1) |>
+  add_recipe(alc_rec1) 
+
+
+alc_fit1 <- alc_wflow1 |>
+  fit(data = alc_train)
+
+tidy(alc_fit1) |>
+  kable(digits = 3)
+```
+
+### Model 2 with Interactions
 
 ```{r}
 #| label: create-recipe
@@ -140,28 +158,11 @@ alc_rec2
 alc_spec <- linear_reg() |>
   set_engine("lm")
 
-alc_wflow1 <- workflow() |>
-  add_model(alc_spec) |>
-  add_recipe(alc_rec1) 
-
-
-alc_fit1 <- alc_wflow |>
-  fit(data = alc_train)
-
-tidy(alc_fit1) |>
-  kable(digits = 3)
-```
-
-```{r}
-alc_spec <- linear_reg() |>
-  set_engine("lm")
-
 alc_wflow2 <- workflow() |>
   add_model(alc_spec) |>
   add_recipe(alc_rec2) 
 
-
-alc_fit2 <- alc_wflow |>
+alc_fit2 <- alc_wflow2 |>
   fit(data = alc_train)
 
 tidy(alc_fit2) |>
