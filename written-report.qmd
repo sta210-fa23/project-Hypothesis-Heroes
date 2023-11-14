@@ -270,4 +270,8 @@ goout: +.365 - As each level of going out with friends increases by one unit the
 
 sex_M: +.872 - If the individual is Male, the expected Walc score increases by .872 compared to the baseline of sex_W on average.
 
-Mjob_services: -.716 - If the individual's Mother works in the services industry, the expected Walc score decreases by .716 compared to the baseline of Mjob_at_home on average.
+Mjob_services: -.716 - If the individual's Mother works in the civil services industry, the expected Walc score decreases by .716 compared to the baseline of Mjob_at_home on average.
+
+### Conclusion
+
+From our data analysis, we conclude that family relationships has the biggest impact on weekend alcohol consumption. Extrapolating from this, we emphasize the importance of strong family dynamics for school aged children. This drives us to consider more research into what makes children feel supported by their families and how parents' employment impacts daily decisions. We also found it interesting that men are more likely to participate in alcohol consumption at school age rather than women. We believe that may have something to local gender norms and allows for further research into young male substance abuse and mental health.
