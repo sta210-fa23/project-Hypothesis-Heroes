@@ -218,8 +218,6 @@ collect_metrics(alc_fit_rsq2, summarize = TRUE)
 alc_test_pred <- predict(alc_fit1, alc_test) |>
   bind_cols(alc_test)
 
-alc_test_pred
-
 rmse(alc_test_pred, truth = Walc, estimate = .pred)
 ```
 
