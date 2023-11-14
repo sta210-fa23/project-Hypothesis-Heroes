@@ -194,16 +194,15 @@ vif(alc_fit_model_2$fit)
 ```
 
 ```{r}
-{r}
 calc_model_stats <- function(x) {
   glance(extract_fit_parsnip(x)) |>
     select(adj.r.squared, AIC, BIC)
 }
 
-alc_fit_rsq1 <- alc_wflow1 |>
+alc_fit_rsq2 <- alc_wflow2 |>
   fit_resamples(resamples = folds,
                 control = control_resamples(extract = calc_model_stats))
-collect_metrics(alc_fit_rsq1, summarize = TRUE)
+collect_metrics(alc_fit_rsq2, summarize = TRUE)
 ```
 
 ::: callout-important
