@@ -111,10 +111,11 @@ alc_spec
 ### StepAIC Model
 
 ```{r}
-lm1 <- lm(Walc ~ sex + Pstatus + schoolsup + famsup + Mjob + Fjob + freetime + studytime + absences + failures, data = alc_train)
+lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
 
-stepAIC(lm1, direction = "backward") |>
-  tidy() 
+lm1AIC <- stepAIC(lm1, direction = "backward")
+
+list(attr(terms(lm1AIC), "term.labels")) 
 ```
 
 ### Model 1
@@ -178,9 +179,6 @@ alc_spec <- linear_reg() |>
 alc_wflow2 <- workflow() |>
   add_model(alc_spec) |>
   add_recipe(alc_rec2) 
-
-
-
 
 alc_fit2 <- alc_wflow2 |>
   fit(data = alc_train)
