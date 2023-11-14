@@ -264,7 +264,7 @@ The coefficients with significant p-values are the following:\
 \
 Medu: +.34 - As each level of Mother's education increases by one unit the expected Walc score increases by .34 on average.
 
-famrel: +.002 - As each level of quality of family relationship increases by one unit the expected Walc score increases by .002 on average.
+famrel: -.296 - As each level of quality of family relationship increases by one unit the expected Walc score decreases by -.296 on average.
 
 goout: +.365 - As each level of going out with friends increases by one unit the expected Walc score increases by .365 on average.
 
