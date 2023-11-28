@@ -88,6 +88,8 @@ We are using a multivariable linear regression to examine the effects of the pre
 
 In our model we also considered including interactions between freetime and studytime, failures and studytime, failures and absences, as well as famsup and Mjob and famsup and Fjob. In our model we used step_dummy() to create dummy variables for all categorical variables, step_interact() to create all of our interaction variables, and step_zv() to remove all variables with only one value.
 
+The StepAIC and VIF steps can be found in the appendix.
+
 ### Split Data into Testing and Training Data
 
 ```{r}
