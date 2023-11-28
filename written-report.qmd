@@ -312,7 +312,7 @@ famsize <- alcfit_resid |>
 reason <- alcfit_resid |> 
   ggplot(aes(x = reason, y = resid)) + 
   geom_point() + 
-  eom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
   labs(x = "reason", y = "Residuals", title = "Residuals vs. reason") 
 
 nursery <- alcfit_resid |> 
