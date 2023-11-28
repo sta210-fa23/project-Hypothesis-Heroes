@@ -263,14 +263,12 @@ From our data analysis, we conclude that family relationships has the biggest im
 Our model is significantly limited by the data collection. The data comes from two schools in Portugal, making it unrealistic to apply to American teens, especially given the different alcohol laws in United States. Portugal also has different family dynamics and values than the US. Our data collection also is self reported on a scale of 1 to 5. Using a 1-5 scale limits our numerical analysis because every evaluation is relative to each participant's understanding of their own situation. This is why we also saw a trend towards the middle, since most participants are likely to pick a less extreme answer in a self reported context. If we were to replicate this analysis, we would seek to find data from the United States that has similar predictor variables, but ones that a measured quantitatively instead of on a 1-5 scale. An example of this would be estimating how many drinks consumed on the weekend rather than self reporting on the scale. We are satisfied with the categorical variables.
 
 ### Appendix
-<<<<<<< HEAD
 
 ### StepAIC Model
 
 ```{r}
 #|label: stepAIC-model
 lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
-
 stepAIC(lm1, direction = "backward",trace = 0) |>
   tidy() |>
   kable(digits = 3)
@@ -293,7 +291,3 @@ vif(alc_fit_model_2$fit) |>
   tidy() |>
   kable(digits = 3)
 ```
-
-#### 
-=======
->>>>>>> 0bbfaf98ca18fc81e38945c6d16d2625abb00a99
