@@ -106,17 +106,6 @@ folds <- vfold_cv(alc_train, v = 5)
 folds
 ```
 
-### StepAIC Model
-
-```{r}
-#|label: stepAIC-model
-lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
-
-stepAIC(lm1, direction = "backward",trace = 0) |>
-  tidy() |>
-  kable(digits = 3)
-```
-
 ### Model 1
 
 ```{r}
@@ -147,15 +136,6 @@ tidy(alc_fit1) |>
   kable(digits = 3)
 
 
-```
-
-#### VIF Multicollinearity Test 1
-
-```{r}
-alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
-vif(alc_fit_model_1$fit) |>
-  tidy() |>
-  kable(digits = 3)
 ```
 
 #### RMSE and R-Squared from 5-Fold Cross Validation 1
@@ -208,15 +188,6 @@ tidy(alc_fit2) |>
   kable(digits = 3)
 
 
-```
-
-#### VIF Multicollinearity Test 2
-
-```{r}
-alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
-vif(alc_fit_model_2$fit) |>
-  tidy() |>
-  kable(digits = 3)
 ```
 
 #### RMSE and R-Squared from 5-Fold Cross Validation 2
@@ -290,3 +261,36 @@ Mjob_services: -.716 - If the individual's Mother works in the civil services in
 From our data analysis, we conclude that family relationships has the biggest impact on weekend alcohol consumption. Extrapolating from this, we emphasize the importance of strong family dynamics for school aged children. This drives us to consider more research into what makes children feel supported by their families and how parents' employment impacts daily decisions. We also found it interesting that men are more likely to participate in alcohol consumption at school age rather than women. We believe that may have something to local gender norms and allows for further research into young male substance abuse and mental health.
 
 Our model is significantly limited by the data collection. The data comes from two schools in Portugal, making it unrealistic to apply to American teens, especially given the different alcohol laws in United States. Portugal also has different family dynamics and values than the US. Our data collection also is self reported on a scale of 1 to 5. Using a 1-5 scale limits our numerical analysis because every evaluation is relative to each participant's understanding of their own situation. This is why we also saw a trend towards the middle, since most participants are likely to pick a less extreme answer in a self reported context. If we were to replicate this analysis, we would seek to find data from the United States that has similar predictor variables, but ones that a measured quantitatively instead of on a 1-5 scale. An example of this would be estimating how many drinks consumed on the weekend rather than self reporting on the scale. We are satisfied with the categorical variables.
+
+### Appendix
+
+### StepAIC Model
+
+```{r}
+#|label: stepAIC-model
+lm1 <- lm(Walc ~ .-Dalc, data = alc_train)
+
+stepAIC(lm1, direction = "backward",trace = 0) |>
+  tidy() |>
+  kable(digits = 3)
+```
+
+#### VIF Multicollinearity Test 1
+
+```{r}
+alc_fit_model_1 <- extract_fit_parsnip(alc_fit1)
+vif(alc_fit_model_1$fit) |>
+  tidy() |>
+  kable(digits = 3)
+```
+
+#### VIF Multicollinearity Test 2
+
+```{r}
+alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
+vif(alc_fit_model_2$fit) |>
+  tidy() |>
+  kable(digits = 3)
+```
+
+#### 
