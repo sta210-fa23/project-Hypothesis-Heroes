@@ -256,6 +256,19 @@ rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
   kable(digits = 3)
 ```
 
+```{r}
+alcfit_resid <- predict(alc_fit, alc_train) |>
+  bind_cols(alc_train$Walc) |>
+  mutate(resid = alc_train$Walc - .pred)
+
+alcfit_resid |>
+  ggplot(aes(x = .pred, y = resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
+  labs(x = "Predicted Values", y = "Residuals")
+
+```
+
 ## Results
 
 Our model assumes independence between predictors, linearity, and the other assumptions of a multilinear regression model. These assumptions were supported by our diagnostic tests as well as the VIF test. Our final R squared was .211 and our final RMSE was 1.125. This suggests that our model accounts for around 21% of the total variation in weekend alcohol consumption with an error of about 1.09. While the R-squared is relatively low, we believe this is still a good model given the context we are trying to predict. Predicting teen behavior is a difficult task, as there are many random factors that can attribute to decision making. Our model only covers a select few, and even with other predicting factors, teen brains usually do not align with predicable patterns.
