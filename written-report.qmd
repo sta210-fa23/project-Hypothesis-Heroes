@@ -242,6 +242,121 @@ alcfit_resid |>
 
 ```
 
+### Checking Conditions for Selected Model
+
+```{r}
+alcfit_resid <- predict(alc_fit, alc_train) |> 
+  bind_cols(alc_train) |> 
+  mutate(resid = Walc - .pred) 
+
+alcfit_resid |> 
+  ggplot(aes(x = .pred, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "Predicted Values", 
+       y = "Residuals", 
+       title = "Residuals vs. Predicted Values") 
+```
+
+```{r}
+#| fig-height: 15 
+#| #| fig-width: 15 
+sex <- alcfit_resid |> 
+  ggplot(aes(x = sex, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "sex", y = "Residuals", title = "Residuals vs. sex") 
+
+fjob <- alcfit_resid |> 
+  ggplot(aes(x = Fjob, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "Fjob", y = "Residuals", title = "Residuals vs. Fjob") 
+
+mjob <- alcfit_resid |> 
+  ggplot(aes(x = Mjob, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "Mjob", y = "Residuals", title = "Residuals vs. Mjob") 
+
+studytime <- alcfit_resid |> 
+  ggplot(aes(x = studytime, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "studytime", y = "Residuals", title = "Residuals vs. studytime") 
+
+absences <- alcfit_resid |> 
+  ggplot(aes(x = absences, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "absences", y = "Residuals", title = "Residuals vs. absences") 
+
+medu <- alcfit_resid |> 
+  ggplot(aes(x = Medu, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "Medu", y = "Residuals", title = "Residuals vs. Medu") 
+
+fedu <- alcfit_resid |> 
+  ggplot(aes(x = Fedu, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "Fedu", y = "Residuals", title = "Residuals vs. Fedu") 
+
+famsize <- alcfit_resid |> 
+  ggplot(aes(x = famsize, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "famsize", y = "Residuals", title = "Residuals vs. famsize") 
+
+reason <- alcfit_resid |> 
+  ggplot(aes(x = reason, y = resid)) + 
+  geom_point() + 
+  eom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "reason", y = "Residuals", title = "Residuals vs. reason") 
+
+nursery <- alcfit_resid |> 
+  ggplot(aes(x = nursery, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "nursery", y = "Residuals", title = "Residuals vs. nursery") 
+
+famrel <- alcfit_resid |> 
+  ggplot(aes(x = famrel, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "famrel", y = "Residuals", title = "Residuals vs. famrel") 
+
+freetime <- alcfit_resid |> 
+  ggplot(aes(x = freetime, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "freetime", y = "Residuals", title = "Residuals vs. freetime") 
+
+goout <- alcfit_resid |> 
+  ggplot(aes(x = goout, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "goout", y = "Residuals", title = "Residuals vs. goout") 
+
+(sex | fjob | mjob ) / (studytime | absences | famsize) / (medu | fedu | reason) / (nursery | famrel | freetime) / goout
+```
+
+```{r}
+alcfit_resid |> 
+  ggplot(aes(x = resid)) +
+  geom_histogram(binwidth = 0.5) + 
+  labs(x = "Predicted Values", y = "Residuals", title = "Residuals vs. Predicted Values")
+```
+
+Linearity: Linearity is met because there are no discernible patterns in the residuals plot of the predicted values and all of the individual predictors; the points are scattered relatively randomly.
+
+Constant Variance: Constant Variance is not met because the vertical spread is not constant throughout; there appears to be a fan shape as you move from left to right, and then the vertical spread decreases again.
+
+Normality:
+
+Independence:
+
 ## Results
 
 Our model assumes independence between predictors, linearity, and the other assumptions of a multilinear regression model. These assumptions were supported by our diagnostic tests as well as the VIF test. Our final R squared was .211 and our final RMSE was 1.125. This suggests that our model accounts for around 21% of the total variation in weekend alcohol consumption with an error of about 1.09. While the R-squared is relatively low, we believe this is still a good model given the context we are trying to predict. Predicting teen behavior is a difficult task, as there are many random factors that can attribute to decision making. Our model only covers a select few, and even with other predicting factors, teen brains usually do not align with predicable patterns.
