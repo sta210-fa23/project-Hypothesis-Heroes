@@ -346,16 +346,16 @@ goout <- alcfit_resid |>
 alcfit_resid |> 
   ggplot(aes(x = resid)) +
   geom_histogram(binwidth = 0.5) + 
-  labs(x = "Predicted Values", y = "Residuals", title = "Residuals vs. Predicted Values")
+  labs(x = "Predicted Values", y = "Residuals", title = "Distribution of Residuals")
 ```
 
 Linearity: Linearity is met because there are no discernible patterns in the residuals plot of the predicted values and all of the individual predictors; the points are scattered relatively randomly.
 
 Constant Variance: Constant Variance is not met because the vertical spread is not constant throughout; there appears to be a fan shape as you move from left to right, and then the vertical spread decreases again.
 
-Normality:
+Normality: Normality is satisfied because the distribution of residuals is approximately unimodal and symmetric.
 
-Independence:
+Independence: Independence is satisfied because the data is a random sample, and we can reasonably assume that the data for one student does not effect the data for the other students.
 
 ## Results
 
