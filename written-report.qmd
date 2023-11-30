@@ -81,6 +81,19 @@ walcfamsup <- alc |>
 
 (walchist | alcline) / (walcstudy | walcfamsup)
 ```
+### Distirbution of Response Variable
+```{r}
+
+summary(alc$Walc)
+
+alc_percentage <- alc %>%
+    group_by(Walc) %>%
+    summarise(count = n()) %>%
+    mutate(Percentage = sprintf("%.2f%%", (count / sum(count) * 100)))
+
+print(alc_percentage)
+```
+
 
 ## Methodology
 
