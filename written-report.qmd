@@ -81,19 +81,23 @@ walcfamsup <- alc |>
 
 (walchist | alcline) / (walcstudy | walcfamsup)
 ```
+
 ### Distirbution of Response Variable
+
 ```{r}
 
-summary(alc$Walc)
+summary(alc$Walc) |>
+  tidy() |>
+  kable()
 
 alc_percentage <- alc %>%
     group_by(Walc) %>%
     summarise(count = n()) %>%
     mutate(Percentage = sprintf("%.2f%%", (count / sum(count) * 100)))
 
-print(alc_percentage)
+alc_percentage |>
+  kable()
 ```
-
 
 ## Methodology
 
@@ -242,19 +246,6 @@ rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
   kable(digits = 3)
 ```
 
-```{r}
-alcfit_resid <- predict(alc_fit, alc_train) |>
-  bind_cols(alc_train$Walc) |>
-  mutate(resid = alc_train$Walc - .pred)
-
-alcfit_resid |>
-  ggplot(aes(x = .pred, y = resid)) +
-  geom_point() +
-  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
-  labs(x = "Predicted Values", y = "Residuals")
-
-```
-
 ### Checking Conditions for Selected Model
 
 ```{r}
@@ -273,7 +264,7 @@ alcfit_resid |>
 
 ```{r}
 #| fig-height: 15 
-#| #| fig-width: 15 
+#| fig-width: 15 
 sex <- alcfit_resid |> 
   ggplot(aes(x = sex, y = resid)) + 
   geom_point() + 
@@ -364,7 +355,7 @@ alcfit_resid |>
 
 Linearity: Linearity is met because there are no discernible patterns in the residuals plot of the predicted values and all of the individual predictors; the points are scattered relatively randomly.
 
-Constant Variance: Constant Variance is not met because the vertical spread is not constant throughout; there appears to be a fan shape as you move from left to right, and then the vertical spread decreases again.
+Constant Variance: Constant Variance is met because in the bulk of the data, the vertical spread is relatively constant throughout; there does not appear to be a fan shape as you move from left to right.
 
 Normality: Normality is satisfied because the distribution of residuals is approximately unimodal and symmetric.
 
@@ -392,7 +383,7 @@ From our data analysis, we conclude that family relationships has the biggest im
 
 Our model is significantly limited by the data collection. The data comes from two schools in Portugal, making it unrealistic to apply to American teens, especially given the different alcohol laws in United States. Portugal also has different family dynamics and values than the US. Our data collection also is self reported on a scale of 1 to 5. Using a 1-5 scale limits our numerical analysis because every evaluation is relative to each participant's understanding of their own situation. This is why we also saw a trend towards the middle, since most participants are likely to pick a less extreme answer in a self reported context. If we were to replicate this analysis, we would seek to find data from the United States that has similar predictor variables, but ones that a measured quantitatively instead of on a 1-5 scale. An example of this would be estimating how many drinks consumed on the weekend rather than self reporting on the scale. We are satisfied with the categorical variables.
 
-### Appendix
+## Appendix
 
 ### StepAIC Model
 
