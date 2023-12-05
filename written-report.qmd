@@ -236,7 +236,6 @@ tidy(alc_fit)|>
 ```
 
 ```{r}
-
 alc_test_pred <- predict(alc_fit1, alc_test) |>
   bind_cols(alc_test)
 
@@ -249,7 +248,7 @@ rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
 ### Checking Conditions for Selected Model
 
 ```{r}
-alcfit_resid <- predict(alc_fit, alc_train) |> 
+alcfit_resid <- predict(alc_fit1, alc_train) |> 
   bind_cols(alc_train) |> 
   mutate(resid = Walc - .pred) 
 
@@ -336,6 +335,12 @@ freetime <- alcfit_resid |>
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
   labs(x = "freetime", y = "Residuals", title = "Residuals vs. freetime") 
+
+goout <- alcfit_resid |> 
+  ggplot(aes(x = goout, y = resid)) + 
+  geom_point() + 
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
+  labs(x = "goout", y = "Residuals", title = "Residuals vs. goout") 
 
 health <- alcfit_resid |> 
   ggplot(aes(x = health, y = resid)) + 
