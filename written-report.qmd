@@ -368,19 +368,19 @@ Independence: Independence is satisfied because the data is a random sample, and
 
 ## Results
 
-Our model assumes independence between predictors, linearity, and the other assumptions of a multilinear regression model. These assumptions were supported by our diagnostic tests as well as the VIF test. Our final R squared was .211 and our final RMSE was 1.125. This suggests that our model accounts for around 21% of the total variation in weekend alcohol consumption with an error of about 1.09. While the R-squared is relatively low, we believe this is still a good model given the context we are trying to predict. Predicting teen behavior is a difficult task, as there are many random factors that can attribute to decision making. Our model only covers a select few, and even with other predicting factors, teen brains usually do not align with predicable patterns.
+Our model assumes independence between predictors, linearity, and the other assumptions of a multilinear regression model. These assumptions were supported by our diagnostic tests as well as the VIF test. Our final R squared was .224 and our final RMSE was 1.121. This suggests that our model accounts for around 22% of the total variation in weekend alcohol consumption with an error of about 1.12. While the R-squared is relatively low, we believe this is still a good model given the context we are trying to predict. Predicting teen behavior is a difficult task, as there are many random factors that can attribute to decision making. Our model only covers a select few, and even with other predicting factors, teen brains usually do not align with predicable patterns.
 
 The coefficients with significant p-values are the following:\
 \
-Medu: +.340 - As each level of Mother's education increases by one unit the expected Walc score increases by .340 on average.
+Medu: +.345 - As each level of Mother's education increases by one unit the expected Walc score increases by .345 on average.
 
-famrel: -.296 - As each level of quality of family relationship increases by one unit the expected Walc score decreases by -.296 on average.
+famrel: -.307 - As each level of quality of family relationship increases by one unit the expected Walc score decreases by -.307 on average.
 
-goout: +.365 - As each level of going out with friends increases by one unit the expected Walc score increases by .365 on average.
+goout: +.381 - As each level of going out with friends increases by one unit the expected Walc score increases by .381 on average.
 
-sex_M: +.872 - If the individual is Male, the expected Walc score increases by .872 compared to the baseline of sex_W on average.
+sex_M: +.838 - If the individual is Male, the expected Walc score increases by .838 compared to the baseline of sex_W on average.
 
-Mjob_services: -.716 - If the individual's Mother works in the civil services industry, the expected Walc score decreases by .716 compared to the baseline of Mjob_at_home on average.
+Mjob_services: -.737 - If the individual's Mother works in the civil services industry, the expected Walc score decreases by .737 compared to the baseline of Mjob_at_home on average.
 
 ### Conclusion
 
