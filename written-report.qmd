@@ -337,13 +337,13 @@ freetime <- alcfit_resid |>
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
   labs(x = "freetime", y = "Residuals", title = "Residuals vs. freetime") 
 
-goout <- alcfit_resid |> 
-  ggplot(aes(x = goout, y = resid)) + 
+health <- alcfit_resid |> 
+  ggplot(aes(x = health, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "goout", y = "Residuals", title = "Residuals vs. goout") 
+  labs(x = "health", y = "Residuals", title = "Residuals vs. health") 
 
-(sex | fjob | mjob ) / (studytime | absences | famsize) / (medu | fedu | reason) / (nursery | famrel | freetime) / goout
+(sex | fjob | mjob ) / (studytime | absences | famsize) / (medu | fedu | reason) / (nursery | famrel | freetime) / (goout | health)
 ```
 
 ```{r}
