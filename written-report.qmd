@@ -375,6 +375,8 @@ Collins SE. Associations Between Socioeconomic Factors and Alcohol Outcomes. Alc
 
 "Underage Drinking in the United States (Ages 12 to 20)." *National Institute on Alcohol Abuse and Alcoholism*, U.S. Department of Health and Human Services,niaaa.nih.gov
 
+\pagebreak
+
 ## Appendix
 
 ### StepAIC Model
