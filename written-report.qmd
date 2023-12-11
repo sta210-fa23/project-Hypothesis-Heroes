@@ -228,8 +228,6 @@ collect_metrics(alc_fit_cv2, summarize = TRUE) |>
 
 ### Applying Model 1 to Testing Data
 
-
-
 ```{r}
 alc_test_pred <- predict(alc_fit1, alc_test) |>
   bind_cols(alc_test)
@@ -408,6 +406,7 @@ vif(alc_fit_model_2$fit) |>
   tidy() |>
   kable(digits = 3)
 ```
+#### Fit To Testing Data
 ```{r}
 alc_fit <- alc_wflow1 |>
   fit(data = alc_test)
