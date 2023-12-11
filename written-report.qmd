@@ -85,7 +85,6 @@ walcfamsup <- alc |>
 ### Distribution of Response Variable
 
 ```{r}
-
 summary(alc$Walc) |>
   tidy() |>
   kable()
@@ -98,6 +97,8 @@ alc_percentage <- alc %>%
 alc_percentage |>
   kable()
 ```
+
+Our initial EDA looked at the distributions of our response variable, weekend alcohol consumption, along with some other relevant factors like study time, family educational support, and weekday alcohol consumption that we hypothesized would have some correlation with weekend alcohol consumption. We found that the majority of students reported their weekend drinking as very low (1) and the amounts reporting subsequent numbers of 2, 3, 4, 5 gradually decreased in number. We also saw that more students reported higher levels of drinking on the weekends (2-5). We also observed a negative linear relationship between weekend alcohol consumption and study time as well as higher weekend alcohol consumption for students with no family educational support vs. those with family educational support.
 
 ## Methodology
 
