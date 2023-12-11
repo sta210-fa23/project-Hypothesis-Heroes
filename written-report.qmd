@@ -135,8 +135,6 @@ alc_rec1 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
 alc_rec1
 ```
 
-#### Model Specification + Workflow 1
-
 ```{r}
 alc_spec1 <- linear_reg() |>
   set_engine("lm")
@@ -186,8 +184,6 @@ alc_rec2 <- recipe(Walc ~ sex + Fjob + studytime + absences + Medu +
 
 alc_rec2
 ```
-
-#### Model Specification + Workflow 2
 
 ```{r}
 alc_spec <- linear_reg() |>
@@ -331,7 +327,7 @@ goout <- alcfit_resid |>
   ggplot(aes(x = goout, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "Amoung of Going Out", y = "Residuals", title = "Residuals vs. Go Out") 
+  labs(x = "Amount of Going Out", y = "Residuals", title = "Residuals vs. Go Out") 
 
 health <- alcfit_resid |> 
   ggplot(aes(x = health, y = resid)) + 
