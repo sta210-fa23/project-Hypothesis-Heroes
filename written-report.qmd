@@ -370,17 +370,7 @@ Independence: Independence is satisfied because the data is a random sample, and
 
 Our model assumes independence between predictors, linearity, and the other assumptions of a multilinear regression model. These assumptions were supported by our diagnostic tests as well as the VIF test. Our final R squared was .224 and our final RMSE was 1.121. This suggests that our model accounts for around 22% of the total variation in weekend alcohol consumption with an error of about 1.12. While the R-squared is relatively low, we believe this is still a good model given the context we are trying to predict. Predicting teen behavior is a difficult task, as there are many random factors that can attribute to decision making. Our model only covers a select few, and even with other predicting factors, teen brains usually do not align with predicable patterns.
 
-The coefficients with significant p-values are the following:\
-\
-Medu: +.345 - As each level of Mother's education increases by one unit the expected Walc score increases by .345 on average.
-
-famrel: -.307 - As each level of quality of family relationship increases by one unit the expected Walc score decreases by -.307 on average.
-
-goout: +.381 - As each level of going out with friends increases by one unit the expected Walc score increases by .381 on average.
-
-sex_M: +.838 - If the individual is Male, the expected Walc score increases by .838 compared to the baseline of sex_W on average.
-
-Mjob_services: -.737 - If the individual's Mother works in the civil services industry, the expected Walc score decreases by .737 compared to the baseline of Mjob_at_home on average.
+From the significant p-values, we concluded that the following variables had an effect on weekend alcohol consumption. As each level of Mother's education increases by one unit the expected weekend alcohol consumption score increases by 0.345 on average. As each level of quality of family relationship increases by one unit the expected weekend alcohol consumption score decreases by 0.307 on average. As each level of going out with friends increases by one unit the expected weekend alcohol consumption score increases by 0.381 on average. If the individual is Male, the expected weekend alcohol consumption score increases by 0.838 compared to the baseline of Female on average. If the individual's Mother works in the civil services industry, the expected weekend alcohol consumption score decreases by 0.737 compared to the baseline of stay at home Mom on average.
 
 ### Conclusion
 
