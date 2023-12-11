@@ -328,7 +328,7 @@ famrel <- alcfit_resid |>
   ggplot(aes(x = famrel, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "Family Relationship Rating", y = "Residuals", title = "Residuals vs. Fammily Relationship") 
+  labs(x = "Family Relationship Rating", y = "Residuals", title = "Residuals vs. Family Relationship") 
 
 freetime <- alcfit_resid |> 
   ggplot(aes(x = freetime, y = resid)) + 
