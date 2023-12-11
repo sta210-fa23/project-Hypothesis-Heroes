@@ -31,7 +31,7 @@ How do social indicators affect student alcohol consumption in secondary schools
 We hypothesize that factors like gender, familial status, family and school support, and other social and economic indicators will strongly influence the rates that secondary school students consume alcohol and that increased alcohol consumption is correlated with their school performance.
 
 ```{r}
-alc <- read_csv("~/project-Hypothesis-Heroes/data/student-por.csv")
+alc <- read_csv("./data/student-por.csv")
 ```
 
 This data is from a Kaggle public dataset, originally sourced from the UC Irvine Machine Learning Repository. The data consists of information collected in 2008 on secondary school students from two schools in Portugal: Gabriel Pereira and Mousinho da Silveira. There are 649 observations, each one being a student, and 33 variables which cover a range of characteristics about each student's family, education, social situation, alcohol consumption, and grades in their Portuguese language class. Some key variables we will be examining are sex, studytime, absences, Medu, Fedu, famrel, freetime, goout, health, Fjob, Mjob, famsize, reason, nursery. Our response variable is Walc, which is the students' average weekend alcohol consumption, on a scale of 1-5, with 5 being very high.
@@ -82,7 +82,7 @@ walcfamsup <- alc |>
 (walchist | alcline) / (walcstudy | walcfamsup)
 ```
 
-### Distirbution of Response Variable
+### Distribution of Response Variable
 
 ```{r}
 
@@ -377,6 +377,12 @@ From the significant p-values, we concluded that the following variables had an 
 From our data analysis, we conclude that family relationships has the biggest impact on weekend alcohol consumption. Extrapolating from this, we emphasize the importance of strong family dynamics for school aged children. This drives us to consider more research into what makes children feel supported by their families and how parents' employment impacts daily decisions. We also found it interesting that men are more likely to participate in alcohol consumption at school age rather than women. We believe that may have something to local gender norms and allows for further research into young male substance abuse and mental health.
 
 Our model is significantly limited by the data collection. The data comes from two schools in Portugal, making it unrealistic to apply to American teens, especially given the different alcohol laws in United States. Portugal also has different family dynamics and values than the US. Our data collection also is self reported on a scale of 1 to 5. Using a 1-5 scale limits our numerical analysis because every evaluation is relative to each participant's understanding of their own situation. This is why we also saw a trend towards the middle, since most participants are likely to pick a less extreme answer in a self reported context. If we were to replicate this analysis, we would seek to find data from the United States that has similar predictor variables, but ones that a measured quantitatively instead of on a 1-5 scale. An example of this would be estimating how many drinks consumed on the weekend rather than self reporting on the scale. We are satisfied with the categorical variables.
+
+## Citations
+
+Collins SE. Associations Between Socioeconomic Factors and Alcohol Outcomes. Alcohol Res. 2016;38(1):83-94. PMID: 27159815; PMCID: PMC4872618.
+
+"Underage Drinking in the United States (Ages 12 to 20)." *National Institute on Alcohol Abuse and Alcoholism*, U.S. Department of Health and Human Services,niaaa.nih.gov
 
 ## Appendix
 
