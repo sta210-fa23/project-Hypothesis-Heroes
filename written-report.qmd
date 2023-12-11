@@ -406,7 +406,9 @@ vif(alc_fit_model_2$fit) |>
   tidy() |>
   kable(digits = 3)
 ```
+
 #### Fit To Testing Data
+
 ```{r}
 alc_fit <- alc_wflow1 |>
   fit(data = alc_test)
