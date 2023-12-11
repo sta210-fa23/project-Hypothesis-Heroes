@@ -108,8 +108,6 @@ After we performed the stepAIC to find our predictors, we moved on to building o
 
 The StepAIC and VIF steps can be found in the appendix.
 
-### Split Data into Testing and Training Data
-
 ```{r}
 #| label: split-data
 set.seed(210)
@@ -117,8 +115,6 @@ alc_split <- initial_split(alc, prop = 0.75)
 alc_train <- training(alc_split)
 alc_test <- testing(alc_split)
 ```
-
-### Split Training Data in 5 Folds for Cross-Validation
 
 ```{r}
 set.seed(210)
