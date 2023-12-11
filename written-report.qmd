@@ -359,7 +359,7 @@ Constant Variance: Constant Variance is met because in the bulk of the data, the
 
 Normality: Normality is satisfied because the distribution of residuals is approximately unimodal and symmetric.
 
-Independence: Independence is satisfied because the data is a random sample, and we can reasonably assume that the data for one student does not effect the data for the other students.
+Independence: Despite no indication of random sampling, we can reasonably treat the data as a random sample of Portuguese high school students, due to consideration of the number of observations, type of class, as all students take Portuguese, as well as the high schools being public. Thus, we can reasonably assume that the data for one student does not effect the data for the other students and independence is satisfied.
 
 ## Results
 
