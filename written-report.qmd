@@ -238,6 +238,8 @@ rsq(alc_test_pred, truth = Walc, estimate = .pred) |>
   kable(digits = 3)
 ```
 
+After fitting the model to the testing data, which can be found in the appendix, we obtained these values for RMSE and R-Squared. All of the interpretations that follow are using the final model on the testing data.
+
 ### Checking Conditions for Selected Model
 
 ```{r}
