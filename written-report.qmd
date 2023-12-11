@@ -122,7 +122,7 @@ alc_test <- testing(alc_split)
 ```{r}
 set.seed(210)
 folds <- vfold_cv(alc_train, v = 5) 
-folds
+
 ```
 
 ### Model 1
