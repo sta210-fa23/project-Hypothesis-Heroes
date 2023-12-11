@@ -268,85 +268,85 @@ sex <- alcfit_resid |>
   ggplot(aes(x = sex, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "sex", y = "Residuals", title = "Residuals vs. sex") 
+  labs(x = "Student's Sex", y = "Residuals", title = "Residuals vs. Student's Sex") 
 
 fjob <- alcfit_resid |> 
   ggplot(aes(x = Fjob, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "Fjob", y = "Residuals", title = "Residuals vs. Fjob") 
+  labs(x = "Father Job", y = "Residuals", title = "Residuals vs. Father Job") 
 
 mjob <- alcfit_resid |> 
   ggplot(aes(x = Mjob, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "Mjob", y = "Residuals", title = "Residuals vs. Mjob") 
+  labs(x = "Mother Job", y = "Residuals", title = "Residuals vs. Mother Job") 
 
 studytime <- alcfit_resid |> 
   ggplot(aes(x = studytime, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "studytime", y = "Residuals", title = "Residuals vs. studytime") 
+  labs(x = "Amount of Studytime", y = "Residuals", title = "Residuals vs. Amount of Studytime") 
 
 absences <- alcfit_resid |> 
   ggplot(aes(x = absences, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "absences", y = "Residuals", title = "Residuals vs. absences") 
+  labs(x = "Number of Absences", y = "Residuals", title = "Residuals vs. Number of Absences") 
 
 medu <- alcfit_resid |> 
   ggplot(aes(x = Medu, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "Medu", y = "Residuals", title = "Residuals vs. Medu") 
+  labs(x = "Mother Education", y = "Residuals", title = "Residuals vs. Mother Education") 
 
 fedu <- alcfit_resid |> 
   ggplot(aes(x = Fedu, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "Fedu", y = "Residuals", title = "Residuals vs. Fedu") 
+  labs(x = "Father Education", y = "Residuals", title = "Residuals vs. Father Education") 
 
 famsize <- alcfit_resid |> 
   ggplot(aes(x = famsize, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "famsize", y = "Residuals", title = "Residuals vs. famsize") 
+  labs(x = "Family Size (Greater than 3 or Less than 3)", y = "Residuals", title = "Residuals vs. Family Size") 
 
 reason <- alcfit_resid |> 
   ggplot(aes(x = reason, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "reason", y = "Residuals", title = "Residuals vs. reason") 
+  labs(x = "Reason for Drinking", y = "Residuals", title = "Residuals vs. Reason") 
 
 nursery <- alcfit_resid |> 
   ggplot(aes(x = nursery, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "nursery", y = "Residuals", title = "Residuals vs. nursery") 
+  labs(x = "If Student went to Nursery School", y = "Residuals", title = "Residuals vs. Nursery") 
 
 famrel <- alcfit_resid |> 
   ggplot(aes(x = famrel, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "famrel", y = "Residuals", title = "Residuals vs. famrel") 
+  labs(x = "Family Relationship Rating", y = "Residuals", title = "Residuals vs. Fammily Relationship") 
 
 freetime <- alcfit_resid |> 
   ggplot(aes(x = freetime, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "freetime", y = "Residuals", title = "Residuals vs. freetime") 
+  labs(x = "Amount of Freetime", y = "Residuals", title = "Residuals vs. Freetime") 
 
 goout <- alcfit_resid |> 
   ggplot(aes(x = goout, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "goout", y = "Residuals", title = "Residuals vs. goout") 
+  labs(x = "Amoung of Going Out", y = "Residuals", title = "Residuals vs. Go Out") 
 
 health <- alcfit_resid |> 
   ggplot(aes(x = health, y = resid)) + 
   geom_point() + 
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") + 
-  labs(x = "health", y = "Residuals", title = "Residuals vs. health") 
+  labs(x = "Student's Health", y = "Residuals", title = "Residuals vs. Health") 
 
 (sex | fjob | mjob ) / (studytime | absences | famsize) / (medu | fedu | reason) / (nursery | famrel | freetime) / (goout | health)
 ```
