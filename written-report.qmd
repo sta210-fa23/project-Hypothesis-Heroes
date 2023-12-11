@@ -102,7 +102,7 @@ Our initial EDA looked at the distributions of our response variable, weekend al
 
 ## Methodology
 
-We are using a multivariable linear regression to examine the effects of the predictor variables sex, Pstatus, schoolsup, famsup, Mjob, Fjob, freetime, studytime, absences, and failures on the response variable Walc, or weekend alcohol consumption. We are using a linear model rather than logistic since Walc is not binary. With many behavioral or otherwise psychological models, the main focus is to identify the greatest effects rather than any effects. As such, because we weren't sure which predictors would give us significant effects, we started by using the stepAIC function to perform a backwards selection on the full model which allowed us to narrow down the predictors with significant effects. The backwards selection process took the full model and removed individual variables until the AIC no longer decreased. We then ran a VIF function to determine multicollinearity and found that our predictors were satisfactorily independent of one another. We considered interactions between studytime and absences, freetime and goout, as well as famrel and famsize. These interaction were chosen based on their real-life contexts (for instance, the effect of family size would likely change depending on familial relationship). The interactions did not significantly improve the r-squared or rmse values as well as greatly increasing collinearity. As such, we selected Model 1 as our model.
+We are using a multivariable linear regression to examine the effects of the predictor variables sex, Pstatus, schoolsup, famsup, Mjob, Fjob, freetime, studytime, absences, and failures on the response variable Walc, or weekend alcohol consumption. We are using a linear model rather than logistic since Walc is not binary. With many behavioral or otherwise psychological models, the main focus is to identify the greatest effects rather than any effects. As such, because we weren't sure which predictors would give us significant effects, we started by using the stepAIC function to perform a backwards selection on the full model which allowed us to narrow down the predictors with significant effects. The backwards selection process takes the full model and then calculated the AIC of the full model without each of the variables. From this list of models (the full model and the several full models missing one variable), it removes the variable associated with the lowest AIC. This process is then repeated with the new full model, now with one less predictor, and continues repeating until the full model has the lowest AIC. This ensures that all the remaining predictors are statistically significant at a level of p < 0.05. For instance, in our backwards selection, the model that removed "guardian" as a predictor had the lowest AIC out of all the models so selection continued with a new full model consisting of all predictors other than guardian. We then ran a VIF function to determine multicollinearity and found that our predictors were satisfactorily independent of one another. We considered interactions between studytime and absences, freetime and goout, as well as famrel and famsize. These interaction were chosen based on their real-life contexts (for instance, the effect of family size would likely change depending on familial relationship). The interactions did not significantly improve the r-squared or rmse values as well as greatly increasing collinearity. As such, we selected Model 1 as our model.
 
 In our model we also considered including interactions between freetime and studytime, failures and studytime, failures and absences, as well as famsup and Mjob and famsup and Fjob. In our model we used step_dummy() to create dummy variables for all categorical variables, step_interact() to create all of our interaction variables, and step_zv() to remove all variables with only one value.
 
@@ -227,14 +227,6 @@ collect_metrics(alc_fit_cv2, summarize = TRUE) |>
 ```
 
 ### Applying Model 1 to Testing Data
-
-```{r}
-alc_fit <- alc_wflow1 |>
-  fit(data = alc_test)
-
-tidy(alc_fit)|>
-  kable(digits = 3)
-```
 
 ```{r}
 alc_test_pred <- predict(alc_fit1, alc_test) |>
@@ -412,5 +404,15 @@ vif(alc_fit_model_1$fit) |>
 alc_fit_model_2 <- extract_fit_parsnip(alc_fit2)
 vif(alc_fit_model_2$fit) |>
   tidy() |>
+  kable(digits = 3)
+```
+
+#### Fit To Testing Data
+
+```{r}
+alc_fit <- alc_wflow1 |>
+  fit(data = alc_test)
+
+tidy(alc_fit)|>
   kable(digits = 3)
 ```
